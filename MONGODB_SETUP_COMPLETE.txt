@@ -1,0 +1,374 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║
+║  🛡️  THREAT INTELLIGENCE SYSTEM - MONGODB COMPLETE SETUP        ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+✅ INSTALLATION COMPLETE!
+
+All MongoDB files have been created successfully. Your project now includes:
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 📂 PROJECT STRUCTURE                                            │
+└─────────────────────────────────────────────────────────────────┘
+
+config/
+  └── db.js                    MongoDB connection with error handling
+
+models/                        Mongoose schemas (production-ready)
+  ├── ThreatSource.js          Intelligence sources (5 samples)
+  ├── ThreatIndicator.js       IOCs: IPs, Domains, URLs, Hashes (8 samples)
+  ├── ThreatActor.js           APT groups & threat actors (5 samples)
+  ├── Incident.js              Security incidents (5 samples)
+  └── index.js                 Central exports
+
+scripts/                       Automation scripts
+  ├── seedData.js              Populate database with sample data
+  └── testConnection.js        Test MongoDB connection & models
+
+server-mongo.js                Main Express server with REST API
+
+Documentation (READ THESE!)
+  ├── MONGODB_README.md        📖 PRIMARY GUIDE - Start here!
+  ├── SCHEMA_DIAGRAM.md        Visual ER diagram & relationships
+  ├── SETUP_SUMMARY.md         Complete file summary
+  └── QUICKSTART.js            Interactive quick start
+
+Configuration
+  ├── .env                     Environment variables (configured)
+  ├── .env.example             Template for reference
+  ├── .gitignore               Git rules (.env excluded)
+  └── package.json             Updated with MongoDB dependencies
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🚀 GETTING STARTED (3 SIMPLE STEPS)                            │
+└─────────────────────────────────────────────────────────────────┘
+
+Step 1: Install MongoDB Dependencies
+──────────────────────────────────────────────────────────────────
+  npm install
+
+  This installs:
+    • mongoose (MongoDB ODM)
+    • express (already installed)
+    • dotenv (already installed)
+
+Step 2: Seed the Database with Sample Data
+──────────────────────────────────────────────────────────────────
+  npm run seed
+
+  This populates:
+    ✓ 5 Threat Sources (AlienVault, VirusTotal, etc.)
+    ✓ 8 Threat Indicators (malicious IPs, domains, hashes)
+    ✓ 5 Threat Actors (APT28, Lazarus Group, FIN7, etc.)
+    ✓ 5 Security Incidents (ransomware, phishing, DDoS, etc.)
+
+Step 3: Start the MongoDB Server
+──────────────────────────────────────────────────────────────────
+  npm run mongo:dev
+
+  Server starts at: http://localhost:5000
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🧪 TEST YOUR SETUP                                             │
+└─────────────────────────────────────────────────────────────────┘
+
+Test Connection:
+  npm run test:db
+
+Test API Endpoints:
+  curl http://localhost:5000/api/health
+  curl http://localhost:5000/api/stats
+  curl http://localhost:5000/api/indicators/severity/critical
+  curl http://localhost:5000/api/actors
+
+Or open in browser:
+  http://localhost:5000/api/health
+  http://localhost:5000/api/stats
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 📚 DOCUMENTATION                                                │
+└─────────────────────────────────────────────────────────────────┘
+
+📖 Primary Guide:
+  • Open: MONGODB_README.md
+  • Complete setup instructions
+  • All API endpoints documented
+  • Troubleshooting guide
+
+🗺️ Visual Schema:
+  • Open: SCHEMA_DIAGRAM.md
+  • Entity relationship diagram
+  • Database design explanations
+  • Query examples
+
+📋 Quick Reference:
+  • Run: npm run quickstart
+  • Interactive setup guide
+  • All commands listed
+
+📊 Setup Summary:
+  • Open: SETUP_SUMMARY.md
+  • Complete file inventory
+  • Feature checklist
+  • Next steps
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🌐 API ENDPOINTS (13 Total)                                    │
+└─────────────────────────────────────────────────────────────────┘
+
+General:
+  GET  /api/health                     Health check & DB status
+  GET  /api/stats                      Database statistics
+
+Threat Sources:
+  GET  /api/sources                    List all sources
+  GET  /api/sources/:id                Get specific source
+
+Threat Indicators:
+  GET  /api/indicators                 List indicators
+  GET  /api/indicators/:id             Get specific indicator
+  GET  /api/indicators/severity/:lvl   Filter by severity
+
+Threat Actors:
+  GET  /api/actors                     List threat actors
+  GET  /api/actors/:id                 Get specific actor
+
+Incidents:
+  GET  /api/incidents                  List incidents
+  GET  /api/incidents/:id              Get specific incident
+  GET  /api/incidents/critical/active  Critical active incidents
+
+Query Parameters Available:
+  ?type=IP|Domain|URL|Hash
+  ?severity=low|medium|high|critical
+  ?status=new|investigating|resolved|closed
+  ?motivation=financial|political|hacktivist
+  ?limit=50
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 📦 NPM SCRIPTS                                                  │
+└─────────────────────────────────────────────────────────────────┘
+
+MongoDB Commands:
+  npm run mongo:start      Start MongoDB server (production)
+  npm run mongo:dev        Start with auto-reload (development)
+  npm run seed             Populate database with sample data
+  npm run test:db          Test connection & verify setup
+
+Utility Commands:
+  npm run quickstart       Show setup instructions
+  npm install              Install dependencies
+
+Original Server (JSON-based):
+  npm start                Start original server
+  npm run dev              Original dev server
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🗄️ DATABASE SCHEMA                                             │
+└─────────────────────────────────────────────────────────────────┘
+
+ThreatSource ─(1:N)─▶ ThreatIndicator
+                            │
+                            │ (M:N)
+                            ▼
+                      ThreatActor ─(M:N)─▶ Incident
+                            │                   │
+                            └───────(M:N)───────┘
+                                    │
+                                    ▼
+                              ThreatIndicator
+
+Collections:
+  • threatsources         Threat intelligence feed sources
+  • threatindicators      IOCs (IPs, domains, URLs, hashes)
+  • threatactors          APT groups and cybercriminals
+  • incidents             Security incidents and breaches
+
+┌─────────────────────────────────────────────────────────────────┐
+│ ⚙️ CONFIGURATION                                                │
+└─────────────────────────────────────────────────────────────────┘
+
+Environment File (.env):
+  MONGODB_URI=mongodb://localhost:27017/threat_intelligence
+  PORT=5000
+  NODE_ENV=development
+
+MongoDB Options:
+  • Local MongoDB:  mongodb://localhost:27017/threat_intelligence
+  • MongoDB Atlas:  mongodb+srv://user:pass@cluster.mongodb.net/db
+
+Note: .env file is already configured with local MongoDB settings.
+      Edit it if you want to use MongoDB Atlas (cloud).
+
+┌─────────────────────────────────────────────────────────────────┐
+│ ✨ FEATURES INCLUDED                                            │
+└─────────────────────────────────────────────────────────────────┘
+
+✅ Database Design
+  • 4 MongoDB collections with relationships
+  • Mongoose models with validation
+  • Indexed fields for performance
+  • Virtual fields for computed values
+
+✅ Sample Data
+  • 28+ realistic threat intelligence records
+  • Linked relationships between entities
+  • Variety of severities and types
+
+✅ REST API
+  • 13 endpoints with filtering
+  • Query parameters for flexibility
+  • Population of related entities
+  • Error handling
+
+✅ Code Quality
+  • ES6 modules (import/export)
+  • Comprehensive comments
+  • Production-ready patterns
+  • Modular architecture
+
+✅ Documentation
+  • Complete README
+  • Schema diagrams
+  • Quick start guide
+  • Troubleshooting
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🚨 PREREQUISITES                                                │
+└─────────────────────────────────────────────────────────────────┘
+
+Before running, ensure you have:
+
+☑️ Node.js (v18+)           Already installed ✓
+☑️ npm or yarn              Already installed ✓
+☐ MongoDB (v6+)             Install if not available
+
+MongoDB Installation Options:
+
+Option A - Local MongoDB (Windows):
+  Download: https://www.mongodb.com/try/download/community
+  Install and start: net start MongoDB
+
+Option B - MongoDB Atlas (Cloud - FREE):
+  1. Sign up: https://www.mongodb.com/cloud/atlas
+  2. Create free cluster
+  3. Get connection string
+  4. Update MONGODB_URI in .env file
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🎯 QUICK START COMMAND                                         │
+└─────────────────────────────────────────────────────────────────┘
+
+Copy and run this single command to get started:
+
+  npm install && npm run seed && npm run mongo:dev
+
+This will:
+  1. Install mongoose and dependencies
+  2. Populate the database with sample data
+  3. Start the development server
+
+Then visit: http://localhost:5000/api/health
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 📖 RECOMMENDED READING ORDER                                    │
+└─────────────────────────────────────────────────────────────────┘
+
+1. This file (overview)
+2. MONGODB_README.md (complete guide)
+3. SCHEMA_DIAGRAM.md (understand data structure)
+4. Run: npm run quickstart (see interactive guide)
+5. Run: npm run test:db (verify everything works)
+
+┌─────────────────────────────────────────────────────────────────┐
+│ ⚡ NEXT STEPS                                                   │
+└─────────────────────────────────────────────────────────────────┘
+
+1. Install Dependencies:
+   npm install
+
+2. Start MongoDB (if local):
+   net start MongoDB
+
+3. Seed Database:
+   npm run seed
+
+4. Test Connection:
+   npm run test:db
+
+5. Start Server:
+   npm run mongo:dev
+
+6. Test API:
+   curl http://localhost:5000/api/stats
+
+7. Read Documentation:
+   Open MONGODB_README.md for complete details
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 💡 TIPS & TRICKS                                                │
+└─────────────────────────────────────────────────────────────────┘
+
+• Use MongoDB Compass to visualize data
+  Download: https://www.mongodb.com/products/compass
+
+• Reset database anytime:
+  npm run seed (clears old data and re-populates)
+
+• Monitor server logs for debugging:
+  All API calls and errors are logged to console
+
+• Use query parameters for filtering:
+  /api/indicators?severity=critical&type=IP&limit=10
+
+• Check health endpoint before debugging:
+  http://localhost:5000/api/health
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 🆘 TROUBLESHOOTING                                              │
+└─────────────────────────────────────────────────────────────────┘
+
+Connection Refused:
+  → Ensure MongoDB is running: net start MongoDB
+  → Check MONGODB_URI in .env file
+
+Module Not Found:
+  → Run: npm install
+  → Ensure "type": "module" in package.json ✓
+
+Port Already in Use:
+  → Change PORT in .env file
+  → Or stop other service on port 5000
+
+Validation Errors:
+  → Review model schemas in models/ folder
+  → Check required fields and enums
+
+┌─────────────────────────────────────────────────────────────────┐
+│ 📞 SUPPORT                                                      │
+└─────────────────────────────────────────────────────────────────┘
+
+Documentation:
+  • MONGODB_README.md      Complete guide
+  • SCHEMA_DIAGRAM.md      Database structure
+  • SETUP_SUMMARY.md       File inventory
+
+Interactive Help:
+  • npm run quickstart     Setup instructions
+  • npm run test:db        Verify installation
+
+Online Resources:
+  • Mongoose Docs:  https://mongoosejs.com/docs/
+  • MongoDB Docs:   https://docs.mongodb.com/
+  • Express Guide:  https://expressjs.com/
+
+═══════════════════════════════════════════════════════════════════
+
+🎉 CONGRATULATIONS! Your MongoDB setup is complete and ready to use!
+
+Start with: npm install && npm run seed && npm run mongo:dev
+
+For detailed documentation, open: MONGODB_README.md
+
+═══════════════════════════════════════════════════════════════════

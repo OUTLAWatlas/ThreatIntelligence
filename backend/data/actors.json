@@ -1,0 +1,161 @@
+[
+  {
+    "id": 1,
+    "name": "APT29",
+    "alias": [
+      "Cozy Bear",
+      "The Dukes"
+    ],
+    "origin": "Russia",
+    "firstSeen": "2008-01-15",
+    "lastSeen": "2024-09-30",
+    "tactics": [
+      "Spear Phishing",
+      "Lateral Movement",
+      "Data Exfiltration"
+    ],
+    "techniques": [
+      "T1566.001",
+      "T1078",
+      "T1041"
+    ],
+    "description": "Russian cyber espionage group associated with SVR",
+    "sophistication": "Advanced",
+    "motivation": [
+      "Espionage",
+      "Intelligence Gathering"
+    ],
+    "targets": [
+      "Government",
+      "Healthcare",
+      "Energy"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Lazarus Group",
+    "alias": [
+      "Hidden Cobra",
+      "ZINC"
+    ],
+    "origin": "North Korea",
+    "firstSeen": "2009-03-20",
+    "lastSeen": "2024-09-25",
+    "tactics": [
+      "Financial Theft",
+      "Ransomware",
+      "Supply Chain Attacks"
+    ],
+    "techniques": [
+      "T1566.002",
+      "T1486",
+      "T1195.002"
+    ],
+    "description": "North Korean state-sponsored cyber group",
+    "sophistication": "Advanced",
+    "motivation": [
+      "Financial Gain",
+      "Espionage"
+    ],
+    "targets": [
+      "Financial",
+      "Cryptocurrency",
+      "Defense"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "name": "APT1",
+    "alias": [
+      "Comment Crew",
+      "PLA Unit 61398"
+    ],
+    "origin": "China",
+    "firstSeen": "2006-05-12",
+    "lastSeen": "2024-08-15",
+    "tactics": [
+      "Long-term Persistence",
+      "Intellectual Property Theft"
+    ],
+    "techniques": [
+      "T1078.003",
+      "T1027",
+      "T1567.002"
+    ],
+    "description": "Chinese military cyber espionage unit",
+    "sophistication": "Advanced",
+    "motivation": [
+      "Espionage",
+      "Economic Advantage"
+    ],
+    "targets": [
+      "Manufacturing",
+      "Technology",
+      "Energy"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "name": "Carbanak",
+    "alias": [
+      "FIN7",
+      "Carbon Spider"
+    ],
+    "origin": "Unknown",
+    "firstSeen": "2013-12-01",
+    "lastSeen": "2024-07-22",
+    "tactics": [
+      "ATM Jackpotting",
+      "Point of Sale Attacks"
+    ],
+    "techniques": [
+      "T1566.001",
+      "T1055",
+      "T1082"
+    ],
+    "description": "Financially motivated cybercriminal group",
+    "sophistication": "Intermediate",
+    "motivation": [
+      "Financial Gain"
+    ],
+    "targets": [
+      "Financial",
+      "Retail",
+      "Hospitality"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": 5,
+    "name": "Equation Group",
+    "alias": [
+      "EQGRP"
+    ],
+    "origin": "United States",
+    "firstSeen": "2001-11-30",
+    "lastSeen": "2024-06-10",
+    "tactics": [
+      "Zero-day Exploits",
+      "Firmware Implants"
+    ],
+    "techniques": [
+      "T1542.003",
+      "T1190",
+      "T1055.001"
+    ],
+    "description": "Highly sophisticated cyber operations group",
+    "sophistication": "Expert",
+    "motivation": [
+      "Intelligence Gathering"
+    ],
+    "targets": [
+      "Government",
+      "Military",
+      "Telecommunications"
+    ],
+    "status": "Active"
+  }
+]

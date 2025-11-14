@@ -1,0 +1,107 @@
+[
+    {
+        "id": 1,
+        "type": "IP Address",
+        "value": "185.159.158.177",
+        "confidence": 85,
+        "tags": ["malware", "c2", "apt29"],
+        "firstSeen": "2024-09-15T10:30:00Z",
+        "lastSeen": "2024-09-30T14:22:00Z",
+        "source": "Internal Analysis",
+        "description": "Command and Control server for APT29 campaign",
+        "tlp": "AMBER",
+        "ioc": true,
+        "geolocation": {
+            "country": "Russia",
+            "city": "Moscow",
+            "asn": "AS12389"
+        },
+        "threat_types": ["Command and Control"],
+        "status": "Active"
+    },
+    {
+        "id": 2,
+        "type": "Domain",
+        "value": "secure-update-cdn.com",
+        "confidence": 92,
+        "tags": ["phishing", "credential-theft", "lazarus"],
+        "firstSeen": "2024-09-20T08:15:00Z",
+        "lastSeen": "2024-09-29T16:45:00Z",
+        "source": "Threat Feed",
+        "description": "Phishing domain used in Lazarus Group campaign",
+        "tlp": "RED",
+        "ioc": true,
+        "geolocation": {
+            "country": "Netherlands",
+            "registrar": "NameCheap Inc."
+        },
+        "threat_types": ["Phishing", "Credential Theft"],
+        "status": "Active"
+    },
+    {
+        "id": 3,
+        "type": "File Hash",
+        "value": "d41d8cd98f00b204e9800998ecf8427e",
+        "hash_type": "MD5",
+        "confidence": 78,
+        "tags": ["malware", "trojan", "apt1"],
+        "firstSeen": "2024-09-10T12:00:00Z",
+        "lastSeen": "2024-09-28T09:30:00Z",
+        "source": "Sandbox Analysis",
+        "description": "Trojan payload associated with APT1",
+        "tlp": "GREEN",
+        "ioc": true,
+        "file_info": {
+            "size": 2048576,
+            "type": "PE32",
+            "family": "Agent.BTZ"
+        },
+        "threat_types": ["Malware", "Trojan"],
+        "status": "Active"
+    },
+    {
+        "id": 4,
+        "type": "URL",
+        "value": "https://banking-security-update.org/login.php",
+        "confidence": 88,
+        "tags": ["phishing", "banking-trojan", "carbanak"],
+        "firstSeen": "2024-09-25T14:20:00Z",
+        "lastSeen": "2024-09-30T11:15:00Z",
+        "source": "User Report",
+        "description": "Banking phishing site operated by Carbanak group",
+        "tlp": "AMBER",
+        "ioc": true,
+        "threat_types": ["Phishing", "Financial Fraud"],
+        "status": "Active"
+    },
+    {
+        "id": 5,
+        "type": "Email",
+        "value": "admin@it-support-team.net",
+        "confidence": 90,
+        "tags": ["spear-phishing", "credential-theft", "apt29"],
+        "firstSeen": "2024-09-18T09:45:00Z",
+        "lastSeen": "2024-09-27T15:30:00Z",
+        "source": "Email Analysis",
+        "description": "Spear phishing sender address used by APT29",
+        "tlp": "RED",
+        "ioc": true,
+        "threat_types": ["Spear Phishing", "Social Engineering"],
+        "status": "Active"
+    },
+    {
+        "id": 6,
+        "type": "IP Address",
+        "value": "192.168.1.100",
+        "confidence": 65,
+        "tags": ["suspicious", "internal", "lateral-movement"],
+        "firstSeen": "2024-09-22T11:00:00Z",
+        "lastSeen": "2024-09-30T17:22:00Z",
+        "source": "Network Monitoring",
+        "description": "Internal IP showing signs of compromise",
+        "tlp": "WHITE",
+        "ioc": false,
+        "threat_types": ["Lateral Movement", "Reconnaissance"],
+        "status": "Investigating"
+    }
+]

@@ -1,0 +1,100 @@
+# Frontend Architecture
+
+## BRIEF
+A modern, responsive cybersecurity threat intelligence dashboard built with vanilla JavaScript, Tailwind CSS, and Chart.js. Features a cyberpunk aesthetic with real-time metrics, interactive charts, CRUD operations for threat data, and mobile-first design. Provides comprehensive management interfaces for threat actors, indicators, incidents, and intelligence feeds.
+
+## DETAILED DESCRIPTION
+
+### Architecture Overview
+The frontend follows a modular, component-based architecture with clean separation between presentation, logic, and data layers. Built entirely with vanilla JavaScript for performance and simplicity, avoiding framework overhead while maintaining modern development practices.
+
+### Directory Structure
+```
+frontend/
+├── index.html                    # Main dashboard entry point
+├── css/
+│   ├── input.css                # Tailwind source with custom components
+│   └── tailwind.css             # Compiled production CSS
+├── js/
+│   ├── dashboard.js             # Main dashboard logic and charts
+│   ├── actors.js                # Threat actors management
+│   ├── indicators.js            # IoC indicators management
+│   ├── incidents.js             # Security incidents handling
+│   └── feeds.js                 # Intelligence feeds management
+└── pages/
+    ├── actors.html              # Threat actors interface
+    ├── indicators.html          # Indicators interface
+    ├── incidents.html           # Incidents interface
+    └── feeds.html               # Feeds interface
+```
+
+### Design System & Styling
+- **Framework**: Tailwind CSS for utility-first styling approach
+- **Theme**: Custom cyberpunk aesthetic with dark backgrounds, neon accents
+- **Colors**: Cyber blue (#00d4ff), green (#00ff88), orange/red for threats
+- **Typography**: Gradient text effects, Inter font family
+- **Components**: Reusable button, card, input, badge, and table classes
+- **Effects**: Glowing borders, animated loaders, hover transitions
+- **Responsive**: Mobile-first design with breakpoint-specific layouts
+
+### JavaScript Architecture
+Each module follows a consistent class-based pattern:
+```javascript
+class ModuleManager {
+    constructor() {
+        this.apiBase = '/api/resource';
+        this.currentPage = 0;
+        this.filters = {};
+        this.init();
+    }
+    // Standard methods: init, setupEventListeners, loadData, renderData
+}
+```
+
+### Core Features
+
+#### Dashboard (index.html + dashboard.js)
+- **Real-time metrics**: Live counts for all threat intelligence resources
+- **Chart.js integration**: Doughnut charts for threat levels, line charts for timelines
+- **Recent activity**: Latest incidents and indicators with direct navigation
+- **System health**: API status monitoring with visual indicators
+- **Auto-refresh**: Periodic data updates without page reload
+
+#### Resource Management Pages
+Each page (actors, indicators, incidents, feeds) provides:
+- **CRUD operations**: Create, read, update, delete with validation
+- **Advanced filtering**: Search, category filters, status filters
+- **Pagination**: Efficient data loading with page navigation
+- **Modal forms**: Overlay forms for adding/editing records
+- **Data tables**: Sortable columns, status badges, action buttons
+- **Responsive design**: Mobile-optimized layouts and touch interactions
+
+#### User Experience Features
+- **Debounced search**: 300ms delay to prevent excessive API calls
+- **Loading states**: Overlay indicators during API operations
+- **Error handling**: Toast notifications for user feedback
+- **Form validation**: Real-time validation with error highlighting
+- **Keyboard support**: Full keyboard navigation and shortcuts
+- **Mobile optimization**: Touch-friendly interfaces, collapsible menus
+
+### API Integration
+- **Fetch API**: Modern HTTP client for all backend communication
+- **RESTful patterns**: Standard HTTP methods (GET, POST, PUT, DELETE)
+- **Query parameters**: Pagination, filtering, and search support
+- **Error handling**: Network errors, validation errors, timeout handling
+- **Optimistic updates**: UI updates before server confirmation
+
+### Performance Optimizations
+- **Modular loading**: Page-specific JavaScript modules
+- **Debounced queries**: Reduced API calls for search and filters
+- **Pagination**: Limited data transfer with lazy loading
+- **CSS compilation**: Optimized Tailwind output for production
+- **Image optimization**: SVG icons and optimized assets
+
+### Security Considerations
+- **Input sanitization**: HTML escaping for user-generated content
+- **CSRF protection**: Proper form handling and validation
+- **XSS prevention**: Safe DOM manipulation practices
+- **Content Security**: Proper script loading and execution
+
+This frontend delivers a professional-grade cybersecurity operations interface with modern web technologies, consistent user experience, and robust performance across all devices.

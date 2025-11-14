@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indicators - ThreatIntel Dashboard</title>
+    <link href="../css/tailwind.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+</head>
+<body class="bg-dark-bg text-white min-h-screen cyber-grid">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-dark-border backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold text-gradient">🛡️ ThreatIntel</span>
+                    </div>
+                    <div class="hidden md:block ml-10">
+                        <div class="flex items-baseline space-x-4">
+                            <a href="/" class="nav-link" data-page="dashboard">Dashboard</a>
+                            <a href="/actors" class="nav-link" data-page="actors">Threat Actors</a>
+                            <a href="/indicators" class="nav-link active" data-page="indicators">Indicators</a>
+                            <a href="/incidents" class="nav-link" data-page="incidents">Incidents</a>
+                            <a href="/feeds" class="nav-link" data-page="feeds">Threat Feeds</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button id="add-indicator-btn" class="btn-primary">
+                        <span class="mr-2">+</span> Add Indicator
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <!-- Page Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gradient">Indicators of Compromise</h1>
+            <p class="mt-2 text-gray-400">Track and analyze threat indicators and IOCs</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="card p-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Search</label>
+                    <input type="text" id="search-input" placeholder="Search indicators..." class="input-field w-full">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Type</label>
+                    <select id="type-filter" class="input-field w-full">
+                        <option value="">All Types</option>
+                        <option value="ip-address">IP Address</option>
+                        <option value="domain">Domain</option>
+                        <option value="file-hash">File Hash</option>
+                        <option value="url">URL</option>
+                        <option value="email">Email</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Confidence</label>
+                    <select id="confidence-filter" class="input-field w-full">
+                        <option value="">All Confidence</option>
+                        <option value="90">High (90%+)</option>
+                        <option value="70">Medium (70%+)</option>
+                        <option value="50">Low (50%+)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Status</label>
+                    <select id="status-filter" class="input-field w-full">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="investigating">Investigating</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="clear-filters" class="btn-secondary w-full">Clear Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Indicators Table -->
+        <div class="card overflow-hidden">
+            <div class="px-6 py-4 border-b border-dark-border">
+                <h3 class="text-lg font-semibold">Threat Indicators</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-dark-border">
+                    <thead class="table-header">
+                        <tr>
+                            <th class="px-6 py-3 text-left">Type</th>
+                            <th class="px-6 py-3 text-left">Value</th>
+                            <th class="px-6 py-3 text-left">Confidence</th>
+                            <th class="px-6 py-3 text-left">Source</th>
+                            <th class="px-6 py-3 text-left">Last Seen</th>
+                            <th class="px-6 py-3 text-left">Status</th>
+                            <th class="px-6 py-3 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="indicators-table-body" class="bg-dark-card divide-y divide-dark-border">
+                        <!-- Indicators will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="mt-6 flex justify-between items-center">
+            <div class="text-sm text-gray-400">
+                Showing <span id="showing-start">0</span> to <span id="showing-end">0</span> of <span id="total-count">0</span> results
+            </div>
+            <div class="flex space-x-2">
+                <button id="prev-page" class="btn-secondary" disabled>Previous</button>
+                <button id="next-page" class="btn-secondary" disabled>Next</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Indicator Modal -->
+    <div id="indicator-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-dark-card p-6 rounded-lg max-w-2xl w-full mx-4 max-h-96 overflow-y-auto scrollbar-thin">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-lg font-semibold">Add Indicator</h3>
+                <button id="close-modal" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <form id="indicator-form">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Type *</label>
+                        <select id="indicator-type" class="input-field w-full" required>
+                            <option value="IP Address">IP Address</option>
+                            <option value="Domain">Domain</option>
+                            <option value="File Hash">File Hash</option>
+                            <option value="URL">URL</option>
+                            <option value="Email">Email</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Confidence (%)</label>
+                        <input type="number" id="indicator-confidence" min="0" max="100" value="50" class="input-field w-full">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Value *</label>
+                        <input type="text" id="indicator-value" class="input-field w-full" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Source *</label>
+                        <input type="text" id="indicator-source" class="input-field w-full" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">TLP Level</label>
+                        <select id="indicator-tlp" class="input-field w-full">
+                            <option value="WHITE">WHITE</option>
+                            <option value="GREEN">GREEN</option>
+                            <option value="AMBER">AMBER</option>
+                            <option value="RED">RED</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label class="block text-sm font-medium text-gray-400 mb-2">Description</label>
+                    <textarea id="indicator-description" rows="3" class="input-field w-full"></textarea>
+                </div>
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button type="button" id="cancel-btn" class="btn-secondary">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Indicator</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/indicators.js"></script>
+</body>
+</html>

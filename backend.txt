@@ -1,0 +1,181 @@
+# Backend Architecture
+
+## BRIEF
+A RESTful Node.js/Express API server providing comprehensive threat intelligence data management. Features modular controller architecture, JSON file storage, CORS support, and full CRUD operations for threat actors, indicators, incidents, and feeds. Designed for rapid development and easy database migration.
+
+## DETAILED DESCRIPTION
+
+### Architecture Overview
+The backend implements a clean, modular architecture following RESTful principles and MVC patterns. Built with Express.js for rapid development, using JSON file storage for simplicity while maintaining the flexibility to migrate to any database system.
+
+### Directory Structure
+```
+backend/
+├── server.js                     # Main Express application entry point
+├── controllers/
+│   ├── actorsController.js       # Threat actors business logic
+│   ├── indicatorsController.js   # IoC indicators logic
+│   ├── incidentsController.js    # Security incidents logic
+│   └── feedsController.js        # Intelligence feeds logic
+├── routes/
+│   ├── actors.js                 # Actor endpoints routing
+│   ├── indicators.js             # Indicator endpoints routing
+│   ├── incidents.js              # Incident endpoints routing
+│   └── feeds.js                  # Feed endpoints routing
+├── data/
+│   ├── actors.json               # Threat actors data store
+│   ├── indicators.json           # Indicators data store
+│   ├── incidents.json            # Incidents data store
+│   └── feeds.json                # Feeds data store
+├── middleware/
+│   └── cors.js                   # Cross-origin resource sharing config
+└── utils/
+    └── helpers.js                # Utility functions and validators
+```
+
+### Server Configuration (server.js)
+- **Express Setup**: Application initialization with middleware stack
+- **Static Serving**: Frontend file serving from /frontend directory
+- **Route Mounting**: API endpoints mounted at /api/* paths
+- **CORS Configuration**: Cross-origin request handling for frontend
+- **Error Handling**: Global error middleware for consistent responses
+- **Environment Config**: Port configuration (default 3000) and paths
+- **Health Endpoint**: System status monitoring at /api/health
+
+### API Design Principles
+
+#### RESTful Endpoints
+```
+GET    /api/{resource}           # List resources with pagination/filtering
+GET    /api/{resource}/{id}      # Get specific resource by ID
+POST   /api/{resource}           # Create new resource
+PUT    /api/{resource}/{id}      # Update existing resource
+DELETE /api/{resource}/{id}      # Delete resource
+```
+
+#### Query Parameters
+- **Pagination**: `limit` (default 50), `offset` (default 0)
+- **Search**: `search` parameter for text-based queries
+- **Filtering**: Resource-specific filters (status, type, severity, etc.)
+- **Sorting**: Configurable sort orders for data retrieval
+
+### Controller Architecture
+Each controller follows a consistent pattern:
+
+```javascript
+class ResourceController {
+    constructor() {
+        this.dataPath = path.join(__dirname, '../data/resource.json');
+    }
+    
+    async loadData()     // Read from JSON file
+    async saveData()     // Write to JSON file
+    async getAll()       // GET /api/resource
+    async getById()      // GET /api/resource/:id
+    async create()       // POST /api/resource
+    async update()       // PUT /api/resource/:id
+    async delete()       // DELETE /api/resource/:id
+}
+```
+
+#### Key Features
+- **Async/Await**: Modern JavaScript for file operations
+- **Error Handling**: Comprehensive try-catch with proper HTTP status codes
+- **Validation**: Input validation for all create/update operations
+- **Filtering**: Advanced search and filter capabilities
+- **Pagination**: Efficient data retrieval with metadata
+
+### Data Management
+
+#### Storage Strategy
+- **JSON Files**: Human-readable, version-controllable data storage
+- **Atomic Operations**: Safe read/write operations with error recovery
+- **Data Integrity**: Validation ensures consistent data structure
+- **Backup Ready**: Easy backup and migration of JSON files
+
+#### Data Models
+
+**Threat Actors**
+- ID, name, aliases, origin, sophistication level
+- Status, description, tactics, techniques, procedures
+- Creation and update timestamps
+
+**Indicators of Compromise (IoCs)**
+- ID, value, type (IP, domain, hash, etc.)
+- Confidence level, status, source information
+- First seen, last seen timestamps
+
+**Security Incidents**
+- ID, title, description, severity, status
+- Threat actor, attack vector, affected systems
+- Timeline events, impact assessment, MITRE ATT&CK mapping
+
+**Threat Intelligence Feeds**
+- ID, name, provider, type, reliability
+- Status, URL, update frequency, description
+- Last update timestamps and statistics
+
+### Security & Middleware
+
+#### CORS Configuration
+- **Origins**: Configurable allowed origins for frontend
+- **Methods**: GET, POST, PUT, DELETE, OPTIONS
+- **Headers**: Content-Type, Authorization support
+- **Credentials**: Optional credential support for authentication
+
+#### Input Validation
+- **Required Fields**: Validation for mandatory data fields
+- **Data Types**: Type checking for all input parameters
+- **Sanitization**: Input cleaning to prevent injection attacks
+- **Error Responses**: Consistent validation error formatting
+
+#### Error Handling
+- **HTTP Status Codes**: Proper status codes for all responses
+- **Error Messages**: User-friendly error descriptions
+- **Logging**: Server-side error logging for debugging
+- **Graceful Degradation**: Fallback responses for edge cases
+
+### Performance Optimizations
+
+#### Efficient Data Operations
+- **Streaming**: Large file handling with streams
+- **Caching**: In-memory data caching for frequently accessed resources
+- **Pagination**: Limited data transfer to reduce response times
+- **Filtering**: Server-side filtering to minimize data transfer
+
+#### Resource Management
+- **Memory Usage**: Efficient JSON parsing and manipulation
+- **File Locking**: Prevention of concurrent write operations
+- **Compression**: Gzip compression for API responses
+- **Connection Pooling**: Efficient HTTP connection handling
+
+### Development Features
+
+#### Developer Experience
+- **Nodemon Integration**: Auto-restart on file changes
+- **Clear Logging**: Detailed console output for debugging
+- **Hot Reload**: No downtime for development iterations
+- **Error Stack Traces**: Detailed error information in development
+
+#### Database Migration Ready
+- **Abstracted Data Layer**: Easy swap to MongoDB, PostgreSQL, etc.
+- **ORM Compatible**: Structure ready for Sequelize, Mongoose, etc.
+- **Migration Scripts**: JSON to database migration utilities
+- **Configuration**: Environment-based database configuration
+
+### Extensibility
+
+#### Adding New Resources
+1. Create controller following established pattern
+2. Define routes with proper HTTP methods
+3. Add JSON data file with sample data
+4. Mount routes in server.js
+5. Update frontend to consume new endpoints
+
+#### Authentication Ready
+- **JWT Support**: Token-based authentication infrastructure
+- **Role-Based Access**: Permission system for different user types
+- **Session Management**: Configurable session handling
+- **OAuth Integration**: Third-party authentication provider support
+
+This backend provides a solid foundation for cybersecurity threat intelligence operations with the flexibility to scale from development prototype to production system with minimal architectural changes.

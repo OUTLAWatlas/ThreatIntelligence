@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "title": "APT29 Spear Phishing Campaign",
+        "description": "Sophisticated spear phishing campaign targeting healthcare organizations",
+        "severity": "High",
+        "status": "Active",
+        "date_discovered": "2024-09-15T10:30:00Z",
+        "date_updated": "2024-09-30T14:22:00Z",
+        "affected_systems": ["Email Servers", "Workstations", "File Servers"],
+        "threat_actor": "APT29",
+        "attack_vector": "Email",
+        "indicators": [1, 5],
+        "mitre_tactics": ["Initial Access", "Credential Access", "Lateral Movement"],
+        "mitre_techniques": ["T1566.001", "T1078", "T1021.001"],
+        "impact": {
+            "confidentiality": "High",
+            "integrity": "Medium",
+            "availability": "Low"
+        },
+        "timeline": [
+            {
+                "timestamp": "2024-09-15T10:30:00Z",
+                "event": "Initial phishing emails detected"
+            },
+            {
+                "timestamp": "2024-09-15T14:15:00Z",
+                "event": "First credential compromise confirmed"
+            },
+            {
+                "timestamp": "2024-09-16T09:20:00Z",
+                "event": "Lateral movement to file servers detected"
+            }
+        ],
+        "analyst": "Security Team Alpha",
+        "organization": "Healthcare Corp"
+    },
+    {
+        "id": 2,
+        "title": "Lazarus Cryptocurrency Exchange Attack",
+        "description": "Targeted attack on cryptocurrency exchange infrastructure",
+        "severity": "Critical",
+        "status": "Contained",
+        "date_discovered": "2024-09-20T08:15:00Z",
+        "date_updated": "2024-09-29T16:45:00Z",
+        "affected_systems": ["Trading Platform", "Wallet Services", "User Database"],
+        "threat_actor": "Lazarus Group",
+        "attack_vector": "Supply Chain",
+        "indicators": [2, 3],
+        "mitre_tactics": ["Initial Access", "Defense Evasion", "Impact"],
+        "mitre_techniques": ["T1195.002", "T1027", "T1486"],
+        "impact": {
+            "confidentiality": "High",
+            "integrity": "High",
+            "availability": "High"
+        },
+        "timeline": [
+            {
+                "timestamp": "2024-09-20T08:15:00Z",
+                "event": "Suspicious domain registration detected"
+            },
+            {
+                "timestamp": "2024-09-21T11:30:00Z",
+                "event": "Malware deployment on trading servers"
+            },
+            {
+                "timestamp": "2024-09-22T15:45:00Z",
+                "event": "Unauthorized cryptocurrency transfers initiated"
+            }
+        ],
+        "analyst": "Incident Response Team",
+        "organization": "CryptoExchange Inc"
+    },
+    {
+        "id": 3,
+        "title": "Carbanak Banking Trojan Campaign",
+        "description": "Large-scale banking trojan campaign targeting multiple financial institutions",
+        "severity": "High",
+        "status": "Monitoring",
+        "date_discovered": "2024-09-25T14:20:00Z",
+        "date_updated": "2024-09-30T11:15:00Z",
+        "affected_systems": ["ATM Networks", "Point of Sale", "Banking Applications"],
+        "threat_actor": "Carbanak",
+        "attack_vector": "Web Application",
+        "indicators": [4],
+        "mitre_tactics": ["Initial Access", "Persistence", "Collection"],
+        "mitre_techniques": ["T1566.002", "T1055", "T1005"],
+        "impact": {
+            "confidentiality": "Medium",
+            "integrity": "High",
+            "availability": "Medium"
+        },
+        "timeline": [
+            {
+                "timestamp": "2024-09-25T14:20:00Z",
+                "event": "Phishing site creation detected"
+            },
+            {
+                "timestamp": "2024-09-26T10:30:00Z",
+                "event": "First victim credentials harvested"
+            },
+            {
+                "timestamp": "2024-09-27T16:15:00Z",
+                "event": "ATM compromise attempts observed"
+            }
+        ],
+        "analyst": "Fraud Prevention Team",
+        "organization": "National Bank"
+    },
+    {
+        "id": 4,
+        "title": "Internal Network Compromise",
+        "description": "Suspected internal network compromise with lateral movement",
+        "severity": "Medium",
+        "status": "Investigating",
+        "date_discovered": "2024-09-22T11:00:00Z",
+        "date_updated": "2024-09-30T17:22:00Z",
+        "affected_systems": ["Internal Workstations", "File Shares", "Domain Controllers"],
+        "threat_actor": "Unknown",
+        "attack_vector": "Unknown",
+        "indicators": [6],
+        "mitre_tactics": ["Lateral Movement", "Discovery", "Collection"],
+        "mitre_techniques": ["T1021.001", "T1082", "T1039"],
+        "impact": {
+            "confidentiality": "Medium",
+            "integrity": "Low",
+            "availability": "Low"
+        },
+        "timeline": [
+            {
+                "timestamp": "2024-09-22T11:00:00Z",
+                "event": "Unusual network traffic detected"
+            },
+            {
+                "timestamp": "2024-09-23T14:30:00Z",
+                "event": "Suspicious process execution on workstation"
+            },
+            {
+                "timestamp": "2024-09-24T09:15:00Z",
+                "event": "Unauthorized file access attempts"
+            }
+        ],
+        "analyst": "SOC Analyst",
+        "organization": "Tech Solutions Ltd"
+    },
+    {
+        "id": 5,
+        "title": "Equation Group Zero-Day Exploitation",
+        "description": "Advanced persistent threat using zero-day exploits",
+        "severity": "Critical",
+        "status": "Active",
+        "date_discovered": "2024-09-12T16:45:00Z",
+        "date_updated": "2024-09-28T12:30:00Z",
+        "affected_systems": ["Network Infrastructure", "Servers", "Endpoints"],
+        "threat_actor": "Equation Group",
+        "attack_vector": "Zero-Day Exploit",
+        "indicators": [],
+        "mitre_tactics": ["Initial Access", "Persistence", "Defense Evasion"],
+        "mitre_techniques": ["T1190", "T1542.003", "T1055.001"],
+        "impact": {
+            "confidentiality": "Critical",
+            "integrity": "High",
+            "availability": "Medium"
+        },
+        "timeline": [
+            {
+                "timestamp": "2024-09-12T16:45:00Z",
+                "event": "Zero-day exploit detected in network traffic"
+            },
+            {
+                "timestamp": "2024-09-13T08:20:00Z",
+                "event": "Firmware implant installation confirmed"
+            },
+            {
+                "timestamp": "2024-09-14T12:10:00Z",
+                "event": "Persistent backdoor established"
+            }
+        ],
+        "analyst": "Advanced Threat Team",
+        "organization": "Government Agency"
+    }
+]

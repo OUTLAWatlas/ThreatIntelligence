@@ -1,0 +1,287 @@
+[
+  {
+    "id": 1,
+    "name": "MISP Threat Sharing",
+    "type": "MISP",
+    "url": "https://misp.local/events/index",
+    "description": "Malware Information Sharing Platform for threat intelligence",
+    "status": "Active",
+    "last_updated": "2024-09-30T18:00:00Z",
+    "update_frequency": "Real-time",
+    "reliability": "High",
+    "tags": [
+      "misp",
+      "sharing",
+      "community"
+    ],
+    "data_types": [
+      "IOCs",
+      "Malware",
+      "Threat Actors"
+    ],
+    "format": "MISP JSON",
+    "authentication": "API Key",
+    "total_indicators": 15420,
+    "new_indicators_today": 47,
+    "source_organization": "MISP Community",
+    "tlp_levels": [
+      "WHITE",
+      "GREEN",
+      "AMBER"
+    ],
+    "categories": [
+      "Malware",
+      "Phishing",
+      "Network Activity"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "AlienVault OTX",
+    "type": "Commercial",
+    "url": "https://otx.alienvault.com/api/v1/pulses/subscribed",
+    "description": "Open Threat Exchange platform for collaborative threat intelligence",
+    "status": "Active",
+    "last_updated": "2024-09-30T17:45:00Z",
+    "update_frequency": "Hourly",
+    "reliability": "High",
+    "tags": [
+      "otx",
+      "pulses",
+      "commercial"
+    ],
+    "data_types": [
+      "IOCs",
+      "Pulses",
+      "Malware Families"
+    ],
+    "format": "JSON",
+    "authentication": "API Key",
+    "total_indicators": 8932,
+    "new_indicators_today": 23,
+    "source_organization": "AT&T Cybersecurity",
+    "tlp_levels": [
+      "WHITE",
+      "GREEN"
+    ],
+    "categories": [
+      "Malware",
+      "C2",
+      "Scanning"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Internal Security Feed",
+    "type": "Internal",
+    "url": "https://internal-siem.company.com/api/feeds",
+    "description": "Company internal threat intelligence feed from SIEM",
+    "status": "Active",
+    "last_updated": "2024-09-30T18:15:00Z",
+    "update_frequency": "Every 15 minutes",
+    "reliability": "High",
+    "tags": [
+      "internal",
+      "siem",
+      "custom"
+    ],
+    "data_types": [
+      "Internal IOCs",
+      "Network Events",
+      "User Behavior"
+    ],
+    "format": "Custom JSON",
+    "authentication": "Internal API",
+    "total_indicators": 2156,
+    "new_indicators_today": 12,
+    "source_organization": "Internal Security Team",
+    "tlp_levels": [
+      "RED",
+      "AMBER"
+    ],
+    "categories": [
+      "Internal Threats",
+      "Anomalies",
+      "Policy Violations"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "VirusTotal Intelligence",
+    "type": "Commercial",
+    "url": "https://www.virustotal.com/vtapi/v2/file/search",
+    "description": "VirusTotal threat intelligence and malware analysis",
+    "status": "Active",
+    "last_updated": "2024-09-30T17:30:00Z",
+    "update_frequency": "Real-time",
+    "reliability": "Very High",
+    "tags": [
+      "virustotal",
+      "malware",
+      "analysis"
+    ],
+    "data_types": [
+      "File Hashes",
+      "URLs",
+      "Domains",
+      "IP Addresses"
+    ],
+    "format": "JSON",
+    "authentication": "API Key",
+    "total_indicators": 45678,
+    "new_indicators_today": 156,
+    "source_organization": "Google/Alphabet",
+    "tlp_levels": [
+      "WHITE",
+      "GREEN"
+    ],
+    "categories": [
+      "Malware",
+      "Suspicious Files",
+      "Network Infrastructure"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "US-CERT Alerts",
+    "type": "Government",
+    "url": "https://us-cert.cisa.gov/ncas/alerts.xml",
+    "description": "US Computer Emergency Readiness Team security alerts",
+    "status": "Active",
+    "last_updated": "2024-09-30T16:00:00Z",
+    "update_frequency": "As published",
+    "reliability": "Very High",
+    "tags": [
+      "uscert",
+      "government",
+      "alerts"
+    ],
+    "data_types": [
+      "Alerts",
+      "Advisories",
+      "IOCs"
+    ],
+    "format": "XML/RSS",
+    "authentication": "Public",
+    "total_indicators": 892,
+    "new_indicators_today": 3,
+    "source_organization": "CISA",
+    "tlp_levels": [
+      "WHITE"
+    ],
+    "categories": [
+      "Critical Vulnerabilities",
+      "APT Activity",
+      "Infrastructure"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Recorded Future",
+    "type": "Commercial",
+    "url": "https://api.recordedfuture.com/v2/threat/",
+    "description": "Real-time threat intelligence platform",
+    "status": "Maintenance",
+    "last_updated": "2024-09-29T14:22:00Z",
+    "update_frequency": "Real-time",
+    "reliability": "High",
+    "tags": [
+      "recorded-future",
+      "commercial",
+      "real-time"
+    ],
+    "data_types": [
+      "Threat Actors",
+      "Vulnerabilities",
+      "Malware"
+    ],
+    "format": "JSON",
+    "authentication": "API Token",
+    "total_indicators": 12456,
+    "new_indicators_today": 0,
+    "source_organization": "Recorded Future",
+    "tlp_levels": [
+      "WHITE",
+      "GREEN",
+      "AMBER"
+    ],
+    "categories": [
+      "Threat Intelligence",
+      "Risk Analysis",
+      "Dark Web"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Threat Connect",
+    "type": "Commercial",
+    "url": "https://api.threatconnect.com/api/v2/indicators",
+    "description": "Collaborative threat intelligence platform",
+    "status": "Active",
+    "last_updated": "2024-09-30T17:55:00Z",
+    "update_frequency": "Hourly",
+    "reliability": "High",
+    "tags": [
+      "threatconnect",
+      "collaborative",
+      "platform"
+    ],
+    "data_types": [
+      "IOCs",
+      "Campaigns",
+      "Signatures"
+    ],
+    "format": "JSON/XML",
+    "authentication": "HMAC",
+    "total_indicators": 18934,
+    "new_indicators_today": 67,
+    "source_organization": "ThreatConnect Inc.",
+    "tlp_levels": [
+      "WHITE",
+      "GREEN",
+      "AMBER"
+    ],
+    "categories": [
+      "Collaborative Intel",
+      "Attribution",
+      "Campaigns"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Anomali ThreatStream",
+    "type": "Commercial",
+    "url": "https://api.threatstream.com/api/v2/intelligence/",
+    "description": "Enterprise threat intelligence management platform",
+    "status": "Error",
+    "last_updated": "2024-09-29T09:15:00Z",
+    "update_frequency": "Real-time",
+    "reliability": "High",
+    "tags": [
+      "anomali",
+      "enterprise",
+      "management"
+    ],
+    "data_types": [
+      "Observables",
+      "Actors",
+      "Signatures"
+    ],
+    "format": "JSON",
+    "authentication": "Username/API Key",
+    "total_indicators": 9876,
+    "new_indicators_today": 0,
+    "source_organization": "Anomali Inc.",
+    "tlp_levels": [
+      "WHITE",
+      "GREEN",
+      "AMBER",
+      "RED"
+    ],
+    "categories": [
+      "Enterprise Intel",
+      "Actor Tracking",
+      "IOC Management"
+    ]
+  }
+]

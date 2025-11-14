@@ -1,0 +1,40 @@
+{
+  "name": "threat-intel-dashboard",
+  "version": "1.0.0",
+  "description": "Cybersecurity Threat Intelligence Dashboard with MongoDB backend and frontend components",
+  "main": "backend/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "mongo:start": "node server-mongo.js",
+    "mongo:dev": "nodemon server-mongo.js",
+    "seed": "node scripts/seedData.js",
+    "test:db": "node scripts/testConnection.js",
+    "quickstart": "node QUICKSTART.js",
+    "build-css": "tailwindcss -i ./frontend/css/input.css -o ./frontend/css/tailwind.css --watch"
+  },
+  "keywords": [
+    "cybersecurity",
+    "threat-intelligence",
+    "dashboard",
+    "express",
+    "mongodb",
+    "mongoose",
+    "tailwindcss"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "mongoose": "^8.19.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.6",
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.3.5"
+  }
+}
