@@ -16,6 +16,7 @@ import actorsRouter from './routes/actors.js';
 import indicatorsRouter from './routes/indicators.js';
 import incidentsRouter from './routes/incidents.js';
 import feedsRouter from './routes/feeds.js';
+import authRouter from './routes/auth.js';
 
 // Import middleware
 import corsMiddleware from './middleware/corsMiddleware.js';
@@ -40,6 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // API Routes
+app.use('/api/auth', authRouter);
 app.use('/api/actors', actorsRouter);
 app.use('/api/indicators', indicatorsRouter);
 app.use('/api/incidents', incidentsRouter);
@@ -57,12 +59,22 @@ app.get('/api/health', (req, res) => {
 
 // Serve frontend pages
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/index.html'));
+    res.sendFile(path.join(__dirname, '../frontend/login.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/login.html'));
+});
+
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/signup.html'));
 });
 
 app.get('/dashboard', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/pages/dashboard.html'));
+    res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
+
+
 
 app.get('/actors', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/pages/actors.html'));

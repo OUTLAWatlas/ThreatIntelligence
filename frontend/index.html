@@ -27,12 +27,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center">
-                    <div class="hidden md:block">
-                        <div class="ml-4 flex items-center md:ml-6">
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <span class="text-sm text-gray-400">User: </span>
+                            <span data-user-info class="ml-2 text-sm text-accent font-medium">Loading...</span>
+                        </div>
+                        <div class="flex items-center">
                             <span class="text-sm text-gray-400">Status: </span>
                             <span id="system-status" class="ml-2 px-2 py-1 text-xs rounded-full bg-threat-low bg-opacity-20 text-threat-low">Online</span>
                         </div>
+                        <button id="logout-btn" class="cyber-button text-sm py-2 px-4">
+                            Logout
+                        </button>
                     </div>
                     <div class="md:hidden">
                         <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
@@ -229,5 +236,6 @@
             setActiveNavLink('dashboard');
         });
     </script>
+    <script src="js/auth.js"></script>
 </body>
 </html>

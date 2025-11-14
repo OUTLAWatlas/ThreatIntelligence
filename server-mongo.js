@@ -18,6 +18,9 @@ import {
   Incident
 } from './models/index.js';
 
+// Import authentication routes
+import authRouter from './backend/routes/auth.js';
+
 // Get __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -49,8 +52,25 @@ await connectDB();
 // API ROUTES
 // ============================================
 
-// Root endpoint - serve index.html
+// Authentication routes
+app.use('/api/auth', authRouter);
+
+// Root endpoint - serve login page
 app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'login.html'));
+});
+
+// Login and signup routes
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'login.html'));
+});
+
+app.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'signup.html'));
+});
+
+// Dashboard route
+app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
